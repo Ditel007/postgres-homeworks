@@ -1,12 +1,15 @@
 import csv
+import os
+
 import psycopg2
+Secret_KEY = os.getenv('SupSec_PASSWORD')
 
 # Подключение к БД
 conn = psycopg2.connect(
     host="localhost",
     database="north",
     user="postgres",
-    password="nikita"
+    password=Secret_KEY
 )
 cursor = conn.cursor()
 
