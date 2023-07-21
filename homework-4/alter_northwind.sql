@@ -13,5 +13,5 @@ CREATE TABLE discontinued_products AS SELECT * FROM products WHERE discontinued 
 
 -- 4. Удалить из products товары, снятые с продажи (discontinued = 1)
 -- Для 4-го пункта может потребоваться удаление ограничения, связанного с foreign_key. Подумайте, как это можно решить, чтобы связь с таблицей order_details все же осталась.
-UPDATE products SET status = 'discontinued' WHERE discontinued = 1;
-DELETE FROM products WHERE status = 'discontinued';
+DELETE FROM order_details WHERE order_details.product_id IN (SELECT product_id FROM products WHERE discontinued = 1)
+DELETE FROM products WHERE discontinued = 1
